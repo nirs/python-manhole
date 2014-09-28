@@ -179,7 +179,7 @@ class Manhole(_ORIGINAL_THREAD):
             signalfd.sigprocmask(signalfd.SIG_BLOCK, self.sigmask)
         pthread_setname_np(self.ident, self.name)
 
-        if self.bind_delay:
+        if False and self.bind_delay:
             cry("Delaying UDS binding %s seconds ..." % self.bind_delay)
             _ORIGINAL_SLEEP(self.bind_delay)
 

@@ -86,12 +86,13 @@ if __name__ == '__main__':
         elif test_name == 'test_fork_exec':
             import subprocess
             manhole.install()
-            for i in range(50):
+            for i in range(500):
                 p = subprocess.Popen(['true'])
                 p.wait()
                 path = '/tmp/manhole-%d' % p.pid
                 if os.path.exists(path):
                     os.unlink(path)
+                    print("Failed at retry", i)
                     raise AssertionError(path + ' exists !')
             print('SUCCESS')
         elif test_name == 'test_activate_on_with_oneshot_on':
